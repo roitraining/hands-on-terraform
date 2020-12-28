@@ -1,12 +1,17 @@
 resource "aws_instance" "vm" {
-  count = var.instance_count
-  ami           = var.image_id[var.region]
-  instance_type = var.instance_type
-  subnet_id = count.index % 2 == 0 ? aws_subnet.subnet-a.id : aws_subnet.subnet-b.id
+  count                       = var.instance_count
+  ami                         = var.image_id[var.region]
+  instance_type               = var.instance_type
+  subnet_id                   = count.index % 2 == 0 ? aws_subnet.subnet-a.id : aws_subnet.subnet-b.id
   associate_public_ip_address = var.add_public_ip
+  security_groups             = [aws_security_group.allow-http.id, aws_security_group.allow-ssh.id]
+  key_name                    = "my-key-pair"
+
+  user_data = file("install_apache.sh")
+
 
   tags = {
-    Name = "${var.project} server ${count.index}" 
+    Name = "${var.project} server ${count.index}"
   }
 }
 

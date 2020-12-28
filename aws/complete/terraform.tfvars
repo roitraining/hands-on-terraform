@@ -1,4 +1,4 @@
-project = "ROI Project"
+project = "roi-project"
 
 # VM variables
 region = "us-east-1"
