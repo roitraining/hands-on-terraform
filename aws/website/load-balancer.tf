@@ -5,7 +5,7 @@ resource "aws_lb" "load_balancer" {
   security_groups    = [aws_security_group.allow-http.id]
   subnets            = [aws_subnet.subnet-a.id, aws_subnet.subnet-b.id]
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Environment = "production"
@@ -35,4 +35,9 @@ resource "aws_lb_target_group_attachment" "servers" {
   target_group_arn = aws_lb_target_group.target_group.arn
   target_id        = aws_instance.vm[count.index].id
   port             = 80
+}
+
+output "load_balancer_address" {
+  value       = aws_lb.load_balancer.dns_name
+  description = "The DNS name for the Load Balancer."
 }
