@@ -1,6 +1,7 @@
 resource "aws_security_group" "allow-http" {
-  name        = "allow-http"
+  name        = "${var.project}-allow-http"
   description = "Enable HTTP Access"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
@@ -19,8 +20,9 @@ resource "aws_security_group" "allow-http" {
 }
 
 resource "aws_security_group" "allow-ssh" {
-  name        = "allow-ssh"
+  name        = "${var.project}-allow-ssh"
   description = "Enable SSH Access"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 22

@@ -40,17 +40,22 @@ variable "add_public_ip" {
   default = true
 }
 
-variable "vpc_cidr" {
-  type    = string
-  default = "10.10.0.0/16"
+variable "subnet_a_id" {
+  type = string
 }
 
-variable "subnet_a_cidr" {
-  type    = string
-  default = "10.10.1.0/24"
+variable "subnet_b_id" {
+  type = string
 }
 
-variable "subnet_b_cidr" {
-  type    = string
-  default = "10.10.2.0/24"
+variable "allow_http_id" {
+  type = string
+}
+
+variable "allow_ssh_id" {
+  type = string
+}
+
+variable "startup_script" {
+  type = string
 }

@@ -1,5 +1,4 @@
 resource "null_resource" "run_script" {
-
     triggers = {
         time = timestamp()
     }

@@ -1,5 +1,11 @@
+resource "random_string" "random" {
+  length = 16
+  special = false
+  upper = false
+}
+
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = var.bucket_name
+  bucket = "${var.bucket_name}-${random_string.random.result}"
 
   acl    = "public-read"
   policy = <<EOF
@@ -14,7 +20,7 @@ resource "aws_s3_bucket" "s3_bucket" {
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${var.bucket_name}/*"
+                "arn:aws:s3:::${var.bucket_name}-${random_string.random.result}/*"
             ]
         }
     ]
