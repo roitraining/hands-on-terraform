@@ -4,6 +4,6 @@ resource "aws_instance" "vm" {
   instance_type = var.instance_type
 
   tags = {
-    Name = "${var.project} server ${count.index}"
+    Name = "${var.project}-server-${count.index}"
   }
 }

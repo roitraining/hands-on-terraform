@@ -1,4 +1,4 @@
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "vm" {
   name         = "${var.project_id}-server"
   machine_type = "f1-micro"
   zone = var.zone

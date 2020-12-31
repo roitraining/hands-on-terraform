@@ -1,3 +1,7 @@
+output "instance_ids" {
+  value = [for instance in aws_instance.vm : instance.id]
+}
+
 output "private_ip_addresses" {
   value       = [for instance in aws_instance.vm : instance.private_ip]
   description = "The private IP address of each server instance."
