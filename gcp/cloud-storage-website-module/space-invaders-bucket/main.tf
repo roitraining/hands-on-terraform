@@ -12,7 +12,6 @@ module "website_bucket" {
   }
 }
 
-
 resource "null_resource" "run_script" {
     provisioner "local-exec" {
         command = "gsutil cp -r gs://invaders.drehnstrom.com/* gs://${module.website_bucket.name}/"
