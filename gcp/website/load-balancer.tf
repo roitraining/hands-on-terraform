@@ -3,12 +3,15 @@ resource "google_compute_backend_service" "backend_service" {
   protocol    = "HTTP"
   timeout_sec = 10
 
-  backend {
-    group           = google_compute_region_instance_group_manager.instance_group.instance_group
-    balancing_mode  = "UTILIZATION"
-    capacity_scaler = 1.0
+  dynamic "backend" {
+    for_each = var.regions
+    content {
+      group           = google_compute_region_instance_group_manager.instance_group[backend.value].instance_group
+      balancing_mode  = "UTILIZATION"
+      capacity_scaler = 1.0
+    }
   }
-
+  
   health_checks = [google_compute_http_health_check.health_check.id]
 }
 

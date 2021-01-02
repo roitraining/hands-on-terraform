@@ -8,33 +8,18 @@ variable "project_id" {
   type        = string
 }
 
-variable "region" {
-  type    = string
-  default = "us-central1"
+variable "regions" {
+  type    = set(string)
+  default = ["us-central1"]
 }
 
-variable "zones" {
-  type    = list(string)
-  default = ["us-central1-a", "us-central1-b"]
-}
-
-variable "subnet_cidr" {
-  type        = string
+variable "subnet_cidrs" {
+  type        = map(string)
   description = "Subnet CIDR for VPC"
-  default = "10.1.1.0/24"
+  default = {
+    us-central1 = "10.1.1.0/24"
+  }
 }
-
-variable "image_id" {
-  description = "The id of the machine image (AMI) to use for the server."
-  type        = string
-  default = "debian-cloud/debian-9"
-}
-
-data "google_compute_image" "debian_image" {
-  family   = "debian-9"
-  project  = "debian-cloud"
-}
-
 
 variable "machine_type" {
   description = "The size of the VM instances."

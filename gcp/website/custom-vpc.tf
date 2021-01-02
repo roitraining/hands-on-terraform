@@ -4,9 +4,10 @@ resource "google_compute_network" "vpc" {
   routing_mode            = "GLOBAL"
 }
 
-resource "google_compute_subnetwork" "subnet_1" {
-  name          = "${var.project}-subnet-${var.region}"
-  ip_cidr_range = var.subnet_cidr
+resource "google_compute_subnetwork" "subnets" {
+  for_each      = var.regions
+  name          = "${var.project}-subnet-${each.value}"
+  ip_cidr_range = var.subnet_cidrs[each.value]
   network       = google_compute_network.vpc.name
-  region        = var.region
+  region        = each.value
 }
