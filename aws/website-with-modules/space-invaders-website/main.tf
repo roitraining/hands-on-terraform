@@ -20,9 +20,9 @@ module "sec-groups" {
 
 # Create the Load Balancer
 module "load-balancer" {
-  source         = "../modules/load-balancer"
-  project        = var.project
-  
+  source  = "../modules/load-balancer"
+  project = var.project
+
   # Passed from VPC Module
   subnet_a_id = module.vpc.subnet_a_id
   subnet_b_id = module.vpc.subnet_b_id
@@ -44,10 +44,10 @@ module "autoscaling-group" {
     us-east-2 = "ami-0a0ad6b70e61be944"
   }
 
-  instance_type  = "t2.micro"
+  instance_type      = "t2.micro"
   instance_count_min = 2
   instance_count_max = 10
-  add_public_ip  = true
+  add_public_ip      = true
 
   # Passed from VPC Module
   subnet_a_id = module.vpc.subnet_a_id
