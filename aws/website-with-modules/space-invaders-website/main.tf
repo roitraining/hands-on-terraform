@@ -60,5 +60,3 @@ module "autoscaling-group" {
   # Passed from Load Balancer Module
   load_balancer_id = module.load-balancer.load_balancer_id
 }
-
-
