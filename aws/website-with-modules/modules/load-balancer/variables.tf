@@ -1,10 +1,10 @@
 variable "project" {
   description = "The name of the current project."
   type        = string
-  default     = "My Project"
+  default     = "my-project"
 }
 
-variable "vpc_id" {
+variable "allow_http_id" {
   type = string
 }
 
@@ -16,14 +16,5 @@ variable "subnet_b_id" {
   type = string
 }
 
-variable "allow_http_id" {
-  type = string
-}
 
-variable "instance_count" {
-  type = number
-}
 
-variable "instance_ids" {
-  type = list(string)
-}

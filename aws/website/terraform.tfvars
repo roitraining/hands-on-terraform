@@ -1,9 +1,10 @@
-project = "roi-project"
+project = "space-invaders"
 
 # VM variables
 region = "us-east-1"
 instance_type = "t2.micro"
-instance_count = 5
+instance_count_min = 2
+instance_count_max = 6
 
 # Network variables
 vpc_cidr = "192.168.0.0/16"

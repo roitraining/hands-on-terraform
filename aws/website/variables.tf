@@ -1,7 +1,7 @@
 variable "project" {
   description = "The name of the current project."
   type        = string
-  default     = "My Project"
+  default     = "my-project"
 }
 
 variable "region" {
@@ -24,14 +24,25 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "instance_count" {
+variable "instance_count_min" {
   description = "Number of instances to provision."
   type        = number
   default     = 1
 
   validation {
-    condition     = var.instance_count > 0 && var.instance_count <= 5
-    error_message = "Instance count must be between 1 and 5."
+    condition     = var.instance_count_min > 0 && var.instance_count_min <= 3
+    error_message = "Instance count min must be between 1 and 3."
+  }
+}
+
+variable "instance_count_max" {
+  description = "Number of instances to provision."
+  type        = number
+  default     = 2
+
+  validation {
+    condition     = var.instance_count_max > 2 && var.instance_count_max <= 10
+    error_message = "Instance count max must be between 3 and 10."
   }
 }
 

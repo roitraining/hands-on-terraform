@@ -18,9 +18,22 @@ module "sec-groups" {
   vpc_id = module.vpc.vpc_id
 }
 
-# Create the Virtual Machines
-module "vms" {
-  source = "../modules/vms"
+# Create the Load Balancer
+module "load-balancer" {
+  source         = "../modules/load-balancer"
+  project        = var.project
+  
+  # Passed from VPC Module
+  subnet_a_id = module.vpc.subnet_a_id
+  subnet_b_id = module.vpc.subnet_b_id
+
+  # Passed from Sec Groups Module
+  allow_http_id = module.sec-groups.allow_http_id
+}
+
+# Create the Autoscaling Group
+module "autoscaling-group" {
+  source = "../modules/autoscaling-group"
 
   region         = var.region
   project        = var.project
@@ -32,7 +45,8 @@ module "vms" {
   }
 
   instance_type  = "t2.micro"
-  instance_count = 5
+  instance_count_min = 2
+  instance_count_max = 10
   add_public_ip  = true
 
   # Passed from VPC Module
@@ -42,22 +56,9 @@ module "vms" {
   # Passed from Sec Groups Module
   allow_http_id = module.sec-groups.allow_http_id
   allow_ssh_id  = module.sec-groups.allow_ssh_id
+
+  # Passed from Load Balancer Module
+  load_balancer_id = module.load-balancer.load_balancer_id
 }
 
-# Create the Load Balancer
-module "load-balancer" {
-  source         = "../modules/load-balancer"
-  project        = var.project
-  instance_count = 5
 
-  # Passed from VPC Module
-  vpc_id      = module.vpc.vpc_id
-  subnet_a_id = module.vpc.subnet_a_id
-  subnet_b_id = module.vpc.subnet_b_id
-
-  # Passed from Sec Groups Module
-  allow_http_id = module.sec-groups.allow_http_id
-
-  # Passed from VMs Module
-  instance_ids = module.vms.instance_ids
-}
