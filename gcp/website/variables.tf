@@ -46,7 +46,3 @@ variable "instance_count" {
 variable "startup_script" {
   type = string
 }
-
-
-
-

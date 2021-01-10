@@ -1,8 +1,13 @@
- resource "aws_s3_bucket" "bucket" {
+resource "aws_s3_bucket" "bucket" {
   bucket_prefix = "roi-"
-  acl    = "private"
+  acl           = "private"
+
+  versioning {
+    enabled = true
+  }
 
   tags = {
-    Name        = "ROI bucket"
+    Name        = "My bucket"
+    Environment = "Prod"
   }
 }

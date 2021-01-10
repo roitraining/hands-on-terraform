@@ -6,7 +6,7 @@ resource "google_compute_backend_service" "backend_service" {
   dynamic "backend" {
     for_each = var.regions
     content {
-      group           = var.instance_group[backend.value].instance_group //google_compute_region_instance_group_manager.instance_group[backend.value].instance_group
+      group           = var.instance_group[backend.value].instance_group
       balancing_mode  = "UTILIZATION"
       capacity_scaler = 1.0
     }
