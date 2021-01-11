@@ -15,5 +15,4 @@ resource "google_storage_bucket" "static-site" {
     main_page_suffix = var.home_page
     not_found_page   = var.error_page
   }
-
 }
