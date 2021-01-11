@@ -15,14 +15,10 @@ resource "aws_launch_configuration" "launch_configuration" {
 
 resource "aws_autoscaling_group" "auto-scaling" {
   name = "${var.project}-asg"
-
   min_size = var.instance_count_min
   max_size = var.instance_count_max
-
   health_check_type = "ELB"
-  load_balancers = [
-    aws_elb.elb.id
-  ]
+  load_balancers = [ aws_elb.elb.id ]
 
   launch_configuration = aws_launch_configuration.launch_configuration.name
 

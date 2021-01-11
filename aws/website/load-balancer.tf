@@ -3,13 +3,8 @@ resource "aws_elb" "elb" {
   security_groups = [
     aws_security_group.allow-http.id
   ]
-  subnets = [
-    aws_subnet.subnet-a.id,
-    aws_subnet.subnet-a.id
-  ]
-
+  subnets = [ aws_subnet.subnet-a.id, aws_subnet.subnet-a.id]
   cross_zone_load_balancing = true
-
   health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2

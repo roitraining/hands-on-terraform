@@ -20,7 +20,6 @@ resource "google_compute_instance_template" "instance_template" {
   for_each     = var.regions
   name         = "${var.project}-instance-template-${each.value}"
   machine_type = var.machine_type
-
   network_interface {
     network    = google_compute_network.vpc.id
     subnetwork = google_compute_subnetwork.subnets[each.value].id
@@ -47,6 +46,3 @@ resource "google_compute_instance_template" "instance_template" {
 output "instance_groups" {
   value = [for group in google_compute_region_instance_group_manager.instance_group : group.instance_group]
 }
-
-
-
