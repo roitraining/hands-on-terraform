@@ -1,0 +1,14 @@
+# Once the cluster is created, to use kubctl run the following:
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+
+# To see the namespaces
+kubectl get ns
+
+# To see the Space Invaders Pods
+kubectl get pods -n space-invaders-ns
+
+# To See the Load Balancer 
+kubectl get services -n space-invaders-ns
+
+# Browse to the External IP of the load balancer. 
+# This is the ELB's DNS name. The program should work.
