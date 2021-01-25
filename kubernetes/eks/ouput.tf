@@ -33,6 +33,6 @@ output "cluster_name" {
   value       = local.cluster_name
 }
 
-output "load_balancer_ip" {
-  value = module.kubernetes.lb_ip
+output "load_balancer_status" {
+  value = module.kubernetes.lb_status
 }

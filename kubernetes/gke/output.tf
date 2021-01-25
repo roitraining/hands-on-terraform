@@ -1,3 +1,3 @@
-output "load_balancer_ip" {
-  value = module.kubernetes.lb_ip
+output "load_balancer_status" {
+  value = module.kubernetes.lb_status
 }
