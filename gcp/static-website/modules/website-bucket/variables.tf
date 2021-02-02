@@ -4,7 +4,7 @@ variable "bucket_name" {
 }
 
 variable "bucket_location" {
-  description = "Name of the bucket. Must be unique."
+  description = "Location of the bucket."
   type        = string
 }
 
@@ -23,5 +23,5 @@ variable "error_page" {
 variable "tags" {
   description = "Tags to set on the bucket."
   type        = map(string)
-  default     = {}
+  default     = {"foo4" = "bar4"}
 }
