@@ -1,16 +1,3 @@
-resource "google_compute_region_instance_group_manager" "instance_group" {
-  for_each = var.regions
-  name     = "${var.project}-instance-group-${each.value}"
-  region   = each.value
-  version {
-    instance_template = google_compute_instance_template.instance_template[each.value].id
-    name              = "primary"
-  }
-  
-  base_instance_name = "${var.project}-webserver"
-  target_size        = var.instance_count
-}
-
 data "google_compute_image" "debian_image" {
   family  = "debian-9"
   project = "debian-cloud"
@@ -41,6 +28,20 @@ resource "google_compute_instance_template" "instance_template" {
     automatic_restart = !var.preemptible
     preemptible       = var.preemptible
   }
+}
+
+
+resource "google_compute_region_instance_group_manager" "instance_group" {
+  for_each = var.regions
+  name     = "${var.project}-instance-group-${each.value}"
+  region   = each.value
+  version {
+    instance_template = google_compute_instance_template.instance_template[each.value].id
+    name              = "primary"
+  }
+  
+  base_instance_name = "${var.project}-webserver"
+  target_size        = var.instance_count
 }
 
 output "instance_groups" {
