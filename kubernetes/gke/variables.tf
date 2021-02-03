@@ -8,7 +8,6 @@ variable "project_id" {
   description = "GCP Project ID"
 }
 
-# define GCP zone
 variable "gcp_zone" {
   type        = string
   description = "GCP Zone"
