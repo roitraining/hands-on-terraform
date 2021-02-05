@@ -24,7 +24,7 @@ resource "aws_autoscaling_group" "auto-scaling" {
 
   vpc_zone_identifier = [
     aws_subnet.subnet-a.id,
-    aws_subnet.subnet-a.id
+    aws_subnet.subnet-b.id
   ]
 
   # Required to redeploy without an outage.
