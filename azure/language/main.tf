@@ -1,33 +1,34 @@
+resource "random_string" "gen-str" {
+  length = 12
+  special = false
+  upper = false
+  lower = true
+  number = true
+  min_numeric = 5
+}
+
 resource "azurerm_resource_group" "terra_ref_rg" {
-  name     = "${var.res_grp_name}-tf-res-grp"
+  name     = "${var.res_grp_name}-${random_string.gen-str.result}-res-grp"
   location = var.res_grp_locale
   tags = var.tags
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name = "${var.prefix}-vnet"
+  name = "${var.prefix}-${random_string.gen-str.result}--vnet"
   address_space = ["10.0.0.0/16"]
   location = var.res_grp_locale
   resource_group_name = azurerm_resource_group.terra_ref_rg.name
   tags = var.tags
 }
 resource "azurerm_subnet" "subnet" {
-  name = "${var.prefix}-tf-subnet"
+  name = "${var.prefix}-${random_string.gen-str.result}--tf-subnet"
   address_prefixes = [ "10.0.1.0/24" ]
   resource_group_name = azurerm_resource_group.terra_ref_rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
 }
 
-resource "azurerm_public_ip" "publicip" {
-  name = "${var.prefix}-tf-pub-ip"
-  location = var.res_grp_locale
-  resource_group_name = azurerm_resource_group.terra_ref_rg.name
-  allocation_method = "Dynamic"
-  tags = var.tags
-}
-
 resource "azurerm_network_security_group" "nsg" {
-  name = "${var.prefix}-tf-vm-nsg"
+  name = "${var.prefix}-${random_string.gen-str.result}-tf-vm-nsg"
   location = var.res_grp_locale
   resource_group_name = azurerm_resource_group.terra_ref_rg.name
   tags = var.tags
@@ -46,7 +47,8 @@ resource "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name = "${var.prefix}-vm-nic"
+  count = var.instance_count
+  name = "${var.prefix}-vm-${count.index}-nic"
   location = var.res_grp_locale
   resource_group_name = azurerm_resource_group.terra_ref_rg.name
   tags = var.tags
@@ -55,20 +57,20 @@ resource "azurerm_network_interface" "nic" {
     name = "${var.prefix}-vm-nic-cfg"
     subnet_id = azurerm_subnet.subnet.id
     private_ip_address_allocation = "dynamic"
-    public_ip_address_id = azurerm_public_ip.publicip.id
   }
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name = "${var.prefix}-az-tf-vm"
+  count = var.instance_count
+  name = "${var.prefix}-az-tf-server-${count.index}-vm"
   location = var.res_grp_locale
   resource_group_name = azurerm_resource_group.terra_ref_rg.name
-  network_interface_ids = [azurerm_network_interface.nic.id]
+  network_interface_ids = [azurerm_network_interface.nic[count.index].id]
   vm_size = var.az_vm_size
   tags = var.tags
 
   storage_os_disk {
-    name = "${var.prefix}-tf-os-disk"
+    name = "${var.prefix}-tf-os-disk-${count.index}"
     caching = "ReadWrite"
     create_option = "FromImage"
     managed_disk_type = "Premium_LRS"
@@ -77,7 +79,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "Canonical"
     offer = "UbuntuServer"
-    sku = "18.04-LTS"
+    sku = lookup(var.sku,var.res_grp_locale)
     version = "latest"
   }
 
