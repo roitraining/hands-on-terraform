@@ -18,14 +18,15 @@ variable "admin_password" {
 
 variable "prefix" {
   type    = string
-  default = "terra"
+  default = "tf"
 }
 
 variable "tags" {
   type = map(string)
   default = {
-    Environment = "TF Azure"
+    Environment = "TF Testing"
     Dept        = "Infrastructure"
+    Accout  = "tf development azure"
   }
 }
 
