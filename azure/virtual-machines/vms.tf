@@ -12,6 +12,13 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
+data "azurerm_public_ip" "ip" {
+  count               = var.instance_count
+  name                = azurerm_public_ip.publicip[count.index].name
+  resource_group_name = azurerm_linux_virtual_machine.vm[count.index].resource_group_name
+  depends_on          = [azurerm_linux_virtual_machine.vm]
+}
+
 resource "azurerm_public_ip" "publicip" {
   count               = var.instance_count
   name                = "myPublicIP-${count.index}"
@@ -19,6 +26,8 @@ resource "azurerm_public_ip" "publicip" {
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
 }
+
+
 
 resource "azurerm_linux_virtual_machine" "vm" {
   count                           = var.instance_count
@@ -42,11 +51,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
-}
-
-data "azurerm_public_ip" "ip" {
-  count               = var.instance_count
-  name                = azurerm_public_ip.publicip[count.index].name
-  resource_group_name = azurerm_linux_virtual_machine.vm[count.index].resource_group_name
-  depends_on          = [azurerm_linux_virtual_machine.vm]
 }
