@@ -1,22 +1,3 @@
-resource "azurerm_resource_group" "rg" {
-  name     = "${var.project}-resource-group"
-  location = var.location
-}
-
-resource "azurerm_virtual_network" "vpc" {
-  name                = "${var.project}-network"
-  address_space       = ["10.0.0.0/16"]
-  location            = var.location
-  resource_group_name = azurerm_resource_group.rg.name
-}
-
-resource "azurerm_subnet" "subnet-1" {
-  name                 = "internal"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vpc.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
-
 resource "azurerm_network_interface" "nic" {
   count               = var.instance_count
   name                = "nic-${count.index}"
@@ -49,7 +30,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_password                  = var.admin_password
   disable_password_authentication = false
   network_interface_ids           = [azurerm_network_interface.nic[count.index].id, ]
-
+  custom_data                     = base64encode(file("install_space-invaders.sh"))
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
