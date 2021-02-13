@@ -17,7 +17,7 @@ resource "azurerm_public_ip" "azure_firewall_ip" {
 # Create the Azure Firewall
 resource "azurerm_firewall" "firewall" {
   depends_on=[azurerm_public_ip.azure_firewall_ip]
-  name = "azure-firewall"
+  name = "${var.project}-firewall"
   resource_group_name = azurerm_resource_group.rg.name
   location = azurerm_resource_group.rg.location
   ip_configuration {
