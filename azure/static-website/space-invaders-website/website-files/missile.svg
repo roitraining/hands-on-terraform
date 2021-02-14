@@ -1,0 +1,367 @@
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg2"
+    sodipodi:docname="bomb.svg"
+    inkscape:export-filename="/home/roger/mis-dibujos/open/bomb.png"
+    viewBox="0 0 208.53 690.02"
+    sodipodi:version="0.32"
+    inkscape:export-xdpi="90"
+    version="1.0"
+    inkscape:output_extension="org.inkscape.output.svg.inkscape"
+    inkscape:export-ydpi="90"
+    inkscape:version="0.46"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:guide-bbox="true"
+      pagecolor="#ffffff"
+      inkscape:window-height="944"
+      inkscape:zoom="0.5"
+      inkscape:window-x="0"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="layer1"
+      inkscape:cx="131.25736"
+      inkscape:cy="638.09533"
+      showguides="true"
+      inkscape:window-y="0"
+      inkscape:window-width="1272"
+      inkscape:pageopacity="0.0"
+      inkscape:document-units="px"
+    >
+    <sodipodi:guide
+        id="guide3389"
+        position="-128,1288"
+        orientation="1,0"
+    />
+  </sodipodi:namedview
+  >
+  <g
+      id="layer1"
+      inkscape:label="Capa 1"
+      inkscape:groupmode="layer"
+      transform="translate(-201.5 -131.34)"
+    >
+    <path
+        id="path3385"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:1px;fill:#231f20"
+        d="m258 646.36l-55 89-1 81 53 1 39-42-36-129z"
+    />
+    <path
+        id="path3387"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:1px;fill:#231f20"
+        d="m349 644.36l55 89 1 81-53 1-39-42 36-129z"
+    />
+    <path
+        id="rect3379"
+        style="fill:#babdb6"
+        d="m301.97 131.34s-99.67 86.11-100 216.04c-0.34 133.14 88 435 88 435h32.06s88.34-301.86 88-435c-0.33-129.93-100-216.04-100-216.04h-8.06z"
+    />
+    <path
+        id="path3393"
+        sodipodi:nodetypes="cscccc"
+        style="fill:#888a85"
+        d="m303.47 134.34s-94.17 87.11-94.5 217.04c-0.34 133.14 88 435 88 435-30.47-147.14-56.3-308.93-60-459.07 0.22-85.67 35.84-153.79 66.69-192.47l-0.19-0.5z"
+    />
+    <path
+        id="path3398"
+        style="fill:#eeeeec"
+        d="m341.41 173.22c28.6 50.82 43.8 109.89 39 168.37-4.48 111.11-19.31 221.47-38.91 330.85 23.06-89.51 44.08-179.88 55.81-271.56 5.36-43.93 6.51-89.72-7.26-132.21-10.38-34.5-27.42-66.89-48.83-95.76l0.19 0.31z"
+    />
+    <path
+        id="path3404"
+        style="fill:#888a85"
+        d="m204.07 305.38c-0.05 0.63-0.09 1.28-0.09 1.92 0 27.09 45.48 49.08 101.52 49.08s101.52-21.99 101.52-49.08c0-0.64-0.04-1.29-0.09-1.92-2.1 26.19-46.73 47.15-101.43 47.15s-99.33-20.96-101.43-47.15z"
+    />
+    <rect
+        id="rect3411"
+        style="fill:#231f20"
+        height="173"
+        width="16"
+        y="648.36"
+        x="296"
+    />
+    <path
+        id="path3413"
+        style="fill-rule:evenodd;fill:#888a85"
+        d="m316 654.36s12 36 23 28-24 98-24 98l1-126z"
+    />
+    <path
+        id="path3463"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 151.55 337.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3465"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 213.54 333.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3473"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 177.69 317.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3475"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#eeeeec"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 239.68 313.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3479"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 125.4 345.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3481"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 187.4 341.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3485"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 99.26 349.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3487"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 161.25 345.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3497"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 73.117 349.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3499"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 135.11 345.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3509"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 46.974 345.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3511"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 108.97 341.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3515"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 20.831 337.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3517"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 82.826 333.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3521"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#888a85"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.96031 0 0 .96031 -5.3115 319.74)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+    <path
+        id="path3523"
+        sodipodi:rx="8.1317282"
+        sodipodi:ry="8.1317282"
+        style="fill:#babdb6"
+        sodipodi:type="arc"
+        d="m236.17-10.066a8.1317 8.1317 0 1 1 -16.26 0 8.1317 8.1317 0 1 1 16.26 0z"
+        transform="matrix(.68362 0 0 .68362 56.683 315.5)"
+        sodipodi:cy="-10.065757"
+        sodipodi:cx="228.04193"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >cartoon bomb</dc:title
+        >
+        <dc:date
+          >2008-11-26T21:07:57</dc:date
+        >
+        <dc:description
+        />
+        <dc:source
+          >https://openclipart.org/detail/20422/cartoon-bomb-by-rg1024</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >rg1024</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >bomb</rdf:li
+            >
+            <rdf:li
+              >cartoon</rdf:li
+            >
+            <rdf:li
+              >explosive</rdf:li
+            >
+            <rdf:li
+              >war</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

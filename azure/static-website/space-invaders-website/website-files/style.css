@@ -1,0 +1,35 @@
+/* Put your css in here */
+
+/*
+.well{
+  background-image: linear-gradient(to bottom, #eeeeee 0%,#eda1a1 100%);
+}
+*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.item img{
+  height:200px !important;
+  margin:auto;
+ 
+}
