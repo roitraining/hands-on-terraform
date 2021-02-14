@@ -19,7 +19,7 @@ resource "azurerm_lb_backend_address_pool" "bpepool" {
 resource "azurerm_lb_probe" "probe" {
   resource_group_name = azurerm_resource_group.rg.name
   loadbalancer_id     = azurerm_lb.lb.id
-  name                = "ssh-running-probe"
+  name                = "running-probe"
   port                = var.application_port
 }
 
