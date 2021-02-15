@@ -33,13 +33,11 @@ variable "instance_count" {
 }
 
 variable "startup_script" {
-  description = "The size of the VM instances."
   type        = string
   default     = ""
 }
 
 variable "application_port" {
-  description = "The size of the VM instances."
   type        = number
   default     = 80
 }
