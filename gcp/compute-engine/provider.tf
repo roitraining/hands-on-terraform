@@ -7,8 +7,6 @@ terraform {
   }
 }
 
-
-
 provider "google" {
   credentials = file("~/terraform-key.json")
 
