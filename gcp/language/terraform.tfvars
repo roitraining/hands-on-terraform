@@ -1,4 +1,4 @@
-project_id = "terraform-123020"
+project_id = "terraform-demos-dar"
 region = "us-central1"
 zone = "us-central1-a"
 os_version = 10
