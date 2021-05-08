@@ -1,6 +1,6 @@
 # Hands-On Terraform
 
-This GitHub repo contains the Terraform Code used in the ROI Training Course: Hands-On Terraform. 
+This repo contains the Terraform Code used in the ROI Training Course: Hands-On Terraform. 
 
 https://www.roitraining.com/course-815-hands-on-terraform/ 
 
