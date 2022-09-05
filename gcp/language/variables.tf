@@ -13,13 +13,13 @@ variable "zone" {
 
 variable "os_version" {
   type    = number
-  default = 9
+  default = 10
 }
 variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
   type        = map(string)
   default = {
-    9  = "debian-cloud/debian-9",
+    11 = "debian-cloud/debian-11",
     10 = "debian-cloud/debian-10"
   }
 }
