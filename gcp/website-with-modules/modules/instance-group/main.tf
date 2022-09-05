@@ -11,7 +11,7 @@ resource "google_compute_region_instance_group_manager" "instance_group" {
 }
 
 data "google_compute_image" "debian_image" {
-  family  = "debian-9"
+  family  = "debian-10"
   project = "debian-cloud"
 }
 
