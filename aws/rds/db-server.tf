@@ -5,7 +5,7 @@ resource "aws_db_instance" "my-database" {
   engine_version             = "8.0"
   auto_minor_version_upgrade = true
   instance_class             = "db.t2.micro"
-  name                       = "db_server"
+  db_name                    = "db_server"
   username                   = "admin"
   password                   = "pa$$w0rd"
   skip_final_snapshot        = true

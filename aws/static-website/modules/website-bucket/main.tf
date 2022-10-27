@@ -8,7 +8,6 @@ resource "aws_s3_bucket" "s3_bucket" {
   bucket = "${var.bucket_name}-${random_string.random.result}"
 
   force_destroy = true
-  acl    = "public-read"
   policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -34,4 +33,9 @@ EOF
   }
 
   tags = var.tags
+}
+
+resource "aws_s3_bucket_acl" "bucket_acl" {
+  bucket = aws_s3_bucket.s3_bucket.id
+  acl    = "public-read"
 }
