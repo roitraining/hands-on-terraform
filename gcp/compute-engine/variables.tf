@@ -14,13 +14,13 @@ variable "zone" {
 variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
   type        = string
-  default = "debian-cloud/debian-10"
+  default = "debian-cloud/debian-11"
 }
 
 variable "machine_type" {
   description = "The size of the VM instances."
   type        = string
-  default     = "f1-micro"
+  default     = "e2-micro"
 }
 
 variable "preemptible" {

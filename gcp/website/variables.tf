@@ -24,7 +24,7 @@ variable "subnet_cidrs" {
 variable "machine_type" {
   description = "The size of the VM instances."
   type        = string
-  default     = "f1-micro"
+  default     = "e2-micro"
 }
 
 variable "preemptible" {

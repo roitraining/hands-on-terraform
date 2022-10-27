@@ -1,5 +1,5 @@
 project = "my-project"
-project_id = "terraform-demos-dar"
+project_id = "your-terraform-project-id"
 zone = "us-central1-a"
 
 regions = ["us-central1", "us-east1"]

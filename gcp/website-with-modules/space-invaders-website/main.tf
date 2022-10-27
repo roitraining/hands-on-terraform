@@ -13,7 +13,7 @@ module "instance-group" {
   source = "../modules/instance-group"
   project = var.project
   regions = var.regions
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   preemptible = true
   instance_count = 2
   startup_script = "install_space_invaders.sh"

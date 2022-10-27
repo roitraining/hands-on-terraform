@@ -1,3 +1,3 @@
-project_id = "terraform-testing-319723"
+project_id = "your-terraform-project-id"
 region = "us-central1"
 zone = "us-central1-a"

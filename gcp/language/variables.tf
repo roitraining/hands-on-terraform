@@ -13,7 +13,7 @@ variable "zone" {
 
 variable "os_version" {
   type    = number
-  default = 10
+  default = 11
 }
 variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
@@ -27,7 +27,7 @@ variable "image_id" {
 variable "machine_type" {
   description = "The size of the VM instances."
   type        = string
-  default     = "f1-micro"
+  default     = "e2-micro"
 }
 
 variable "preemptible" {
