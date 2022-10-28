@@ -30,7 +30,7 @@ resource "azurerm_lb_rule" "lbnatrule" {
   protocol                       = "Tcp"
   frontend_port                  = var.application_port
   backend_port                   = var.application_port
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.bpepool.id]
   frontend_ip_configuration_name = "PublicIPAddress"
   probe_id                       = azurerm_lb_probe.probe.id
 }
