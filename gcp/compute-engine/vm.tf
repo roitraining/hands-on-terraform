@@ -9,9 +9,17 @@ resource "google_compute_instance" "vm" {
   metadata_startup_script = file("install_space-invaders.sh")
 
   scheduling {
-    automatic_restart = !var.preemptible
-    preemptible       = var.preemptible
+    # If `spot` is true, disabled restart
+    automatic_restart = !var.spot
+
+    # If `spot` is true, provisioning model is SPOT,
+    # otherwise it's STANDARD.
+    provisioning_model = var.spot ? "SPOT" : "STANDARD"
+
+    # If `spot` is true, the instance is preemptible.
+    preemptible = var.spot
   }
+
 
   boot_disk {
     initialize_params {

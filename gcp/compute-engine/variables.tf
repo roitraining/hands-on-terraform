@@ -23,7 +23,7 @@ variable "machine_type" {
   default     = "e2-micro"
 }
 
-variable "preemptible" {
+variable "spot" {
   type    = bool
   default = false
 }
