@@ -4,7 +4,7 @@ project_id = "your-terraform-project-id"
 regions =  ["us-central1", "us-east1"]
 instance_count = 2
 startup_script = "install_space_invaders.sh"
-preemptible = false
+spot = true
 machine_type = "e2-micro"
 
 subnet_cidrs = {

@@ -1,5 +1,5 @@
 data "google_compute_image" "debian_image" {
-  family  = "debian-11"
+  family  = "debian-12"
   project = "debian-cloud"
 }
 
@@ -25,10 +25,12 @@ resource "google_compute_instance_template" "instance_template" {
   tags = ["webserver"]
 
   scheduling {
-    automatic_restart = !var.preemptible
-    preemptible       = var.preemptible
+    automatic_restart = !var.spot
+    provisioning_model = var.spot ? "SPOT" : "STANDARD"
+    preemptible = var.spot
   }
 }
+
 
 
 resource "google_compute_region_instance_group_manager" "instance_group" {
@@ -42,7 +44,14 @@ resource "google_compute_region_instance_group_manager" "instance_group" {
   
   base_instance_name = "${var.project}-webserver"
   target_size        = var.instance_count
+
+  named_port {
+    name = "http"
+    port = "80"
+  }
+
 }
+
 
 output "instance_groups" {
   value = [for group in google_compute_region_instance_group_manager.instance_group : group.instance_group]
