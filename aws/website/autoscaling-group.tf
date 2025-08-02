@@ -1,40 +1,60 @@
-resource "aws_launch_configuration" "launch_configuration" {
-  name = "${var.project}-launch-config"
+# ------------------------
+# Launch Template
+# ------------------------
+resource "aws_launch_template" "web_template" {
+  name_prefix   = "${var.project}-lt-"
+  image_id      = var.image_id[var.region]
+  instance_type = var.instance_type
 
-  image_id                    = var.image_id[var.region]
-  instance_type               = var.instance_type
-  security_groups             = [aws_security_group.allow-http.id, aws_security_group.allow-ssh.id]
-  associate_public_ip_address = var.add_public_ip
+  vpc_security_group_ids = [
+    aws_security_group.allow-http.id,
+    aws_security_group.allow-ssh.id
+  ]
 
-  user_data = file("install_space_invaders.sh")
+  user_data = filebase64("install_space_invaders.sh")
 
-  lifecycle {
-    create_before_destroy = true
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      Name = "${var.project}-webserver"
+    }
   }
 }
 
-resource "aws_autoscaling_group" "auto-scaling" {
-  name = "${var.project}-asg"
-  min_size = var.instance_count_min
-  max_size = var.instance_count_max
-  health_check_type = "ELB"
-  load_balancers = [ aws_elb.elb.id ]
+# ------------------------
+# Auto Scaling Group
+# ------------------------
+resource "aws_autoscaling_group" "web_asg" {
+  name                      = "${var.project}-asg"
+  max_size                  = var.instance_count_max
+  min_size                  = var.instance_count_min
+  desired_capacity          = var.instance_count_min
+  vpc_zone_identifier       = [aws_subnet.subnet-a.id, aws_subnet.subnet-b.id]
+  health_check_type         = "ELB"
+  health_check_grace_period = 300
 
-  launch_configuration = aws_launch_configuration.launch_configuration.name
-
-  vpc_zone_identifier = [
-    aws_subnet.subnet-a.id,
-    aws_subnet.subnet-b.id
-  ]
-
-  # Required to redeploy without an outage.
-  lifecycle {
-    create_before_destroy = true
+  launch_template {
+    id      = aws_launch_template.web_template.id
+    version = "$Latest"
   }
+
+  target_group_arns = [aws_lb_target_group.web_tg.arn]
 
   tag {
     key                 = "Name"
     value               = "${var.project}-webserver"
     propagate_at_launch = true
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
+
+
+
+
+
+
+
