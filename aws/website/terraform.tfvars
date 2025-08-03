@@ -2,7 +2,7 @@ project = "space-invaders"
 
 # VM variables
 region = "us-east-1"
-instance_type = "t2.micro"
+instance_type = "t3.micro"
 instance_count_min = 2
 instance_count_max = 6
 

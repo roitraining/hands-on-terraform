@@ -6,12 +6,16 @@ resource "aws_launch_template" "web_template" {
   image_id      = var.image_id[var.region]
   instance_type = var.instance_type
 
-  vpc_security_group_ids = [
-    aws_security_group.allow-http.id,
-    aws_security_group.allow-ssh.id
-  ]
-
   user_data = filebase64("install_space_invaders.sh")
+
+  network_interfaces {
+    associate_public_ip_address = true
+    delete_on_termination       = true
+    security_groups             = [
+      aws_security_group.allow-http.id,
+      aws_security_group.allow-ssh.id
+    ]
+  }
 
   tag_specifications {
     resource_type = "instance"
