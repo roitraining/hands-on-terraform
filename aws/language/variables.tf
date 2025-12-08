@@ -6,22 +6,22 @@ variable "project" {
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "us-east-2"
 }
 
 variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
   type        = map(string)
   default = {
-    us-east-1 = "ami-0be2609ba883822ec",
-    us-east-2 = "ami-0a0ad6b70e61be944"
+    us-east-1 = "ami-0fa3fe0fa7920f68e",
+    us-east-2 = "ami-025ca978d4c1d9825"
   }
 }
 
 variable "instance_type" {
   description = "The size of the VM instances."
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "instance_count" {
