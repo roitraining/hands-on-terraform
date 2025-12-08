@@ -1,8 +1,8 @@
 resource "aws_instance" "vm" {  
-  ami           = "ami-0be2609ba883822ec"
-  instance_type = "t2.medium"
+  ami           = "ami-025ca978d4c1d9825"
+  instance_type = "t3.medium"
 
   tags = {
-    Name = "${var.project}-vm"
+    Name = "${var.project}-vm"ami-025ca978d4c1d9825
   }
 }
