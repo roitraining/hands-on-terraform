@@ -1,6 +1,6 @@
-variable "project" {
-  type    = string
-  description = "The name of the project for this ....."
+variable "account" {
+  type        = string
+  description = "The name of the account for this ....."
 }
 variable "region" {
   type    = string

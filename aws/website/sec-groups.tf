@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow-http" {
-  name        = "${var.project}-allow-http"
+  name        = "${var.account}-allow-http"
   description = "Enable HTTP Access"
   vpc_id      = aws_vpc.vpc.id
 
@@ -20,7 +20,7 @@ resource "aws_security_group" "allow-http" {
 }
 
 resource "aws_security_group" "allow-ssh" {
-  name        = "${var.project}-allow-ssh"
+  name        = "${var.account}-allow-ssh"
   description = "Enable SSH Access"
   vpc_id      = aws_vpc.vpc.id
 

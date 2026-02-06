@@ -1,2 +1,2 @@
-project = "my-project"
-region = "us-east-2"
+account = "my-account"
+region  = "us-east-2"

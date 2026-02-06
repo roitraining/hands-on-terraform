@@ -6,7 +6,7 @@ module "website_bucket" {
   error_page  = "index.html"
 
   tags = {
-    website   = "space-invaders"
+    website     = "space-invaders"
     environment = "prod"
   }
 }

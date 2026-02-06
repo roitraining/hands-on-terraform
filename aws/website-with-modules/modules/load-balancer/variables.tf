@@ -1,7 +1,7 @@
-variable "project" {
-  description = "The name of the current project."
+variable "account" {
+  description = "The name of the current account."
   type        = string
-  default     = "my-project"
+  default     = "my-account"
 }
 
 variable "allow_http_id" {

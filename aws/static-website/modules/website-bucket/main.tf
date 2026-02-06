@@ -25,8 +25,8 @@ resource "aws_s3_bucket_public_access_block" "this" {
   bucket                  = aws_s3_bucket.s3_bucket.id
   block_public_acls       = true
   ignore_public_acls      = true
-  block_public_policy     = false   # allow a public bucket policy
-  restrict_public_buckets = false   # allow this bucket to be public
+  block_public_policy     = false # allow a public bucket policy
+  restrict_public_buckets = false # allow this bucket to be public
 }
 
 # New, non-deprecated website configuration resource

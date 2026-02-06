@@ -3,7 +3,7 @@ module "vpc" {
   source = "../modules/vpc"
 
   region        = var.region
-  project       = var.project
+  account       = var.account
   vpc_cidr      = "192.168.0.0/16"
   subnet_a_cidr = "192.168.1.0/24"
   subnet_b_cidr = "192.168.2.0/24"
@@ -13,7 +13,7 @@ module "vpc" {
 module "sec-groups" {
   source = "../modules/sec-groups"
 
-  project = var.project
+  account = var.account
   # Passed from VPC Module
   vpc_id = module.vpc.vpc_id
 }
@@ -21,7 +21,7 @@ module "sec-groups" {
 # Create the Load Balancer
 module "load-balancer" {
   source  = "../modules/load-balancer"
-  project = var.project
+  account = var.account
 
   # Passed from VPC Module
   subnet_a_id = module.vpc.subnet_a_id
@@ -36,12 +36,12 @@ module "autoscaling-group" {
   source = "../modules/autoscaling-group"
 
   region         = var.region
-  project        = var.project
+  account        = var.account
   startup_script = "install_space_invaders.sh"
 
   image_id = {
-    us-east-1 = "ami-0be2609ba883822ec",
-    us-east-2 = "ami-0a0ad6b70e61be944"
+    us-east-1 = "ami-0532be01f26a3de55",
+    us-east-2 = "ami-03ea746da1a2e36e7"
   }
 
   instance_type      = "t2.micro"

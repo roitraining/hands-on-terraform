@@ -5,7 +5,7 @@ resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = { Name = "minimal-vpc" }
+  tags                 = { Name = "minimal-vpc" }
 }
 
 resource "aws_subnet" "subnet1" {
@@ -13,7 +13,7 @@ resource "aws_subnet" "subnet1" {
   cidr_block              = var.subnet1_cidr
   availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = false
-  tags = { Name = "db-subnet-1" }
+  tags                    = { Name = "db-subnet-1" }
 }
 
 resource "aws_subnet" "subnet2" {
@@ -21,14 +21,14 @@ resource "aws_subnet" "subnet2" {
   cidr_block              = var.subnet2_cidr
   availability_zone       = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = false
-  tags = { Name = "db-subnet-2" }
+  tags                    = { Name = "db-subnet-2" }
 }
 
 # RDS requires a subnet group spanning >=2 AZs
 resource "aws_db_subnet_group" "rds" {
   name       = "minimal-rds-subnet-group"
   subnet_ids = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
-  tags = { Name = "minimal-rds-subnet-group" }
+  tags       = { Name = "minimal-rds-subnet-group" }
 }
 
 # Simple SG for MySQL (adjust to your IP or VPC peers)
@@ -41,7 +41,7 @@ resource "aws_security_group" "rds" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = [var.ingress_cidr]  # CHANGE THIS (avoid 0.0.0.0/0)
+    cidr_blocks = [var.ingress_cidr] # CHANGE THIS (avoid 0.0.0.0/0)
   }
 
   egress {
@@ -64,17 +64,17 @@ resource "aws_db_instance" "mysql" {
   storage_type               = "gp3"
   auto_minor_version_upgrade = true
 
-  db_name                    = "appdb"
-  username                   = var.db_username
-  password                   = var.db_password   # mark variable as sensitive
+  db_name  = "appdb"
+  username = var.db_username
+  password = var.db_password # mark variable as sensitive
 
-  db_subnet_group_name       = aws_db_subnet_group.rds.name  # two+ AZ subnets
-  vpc_security_group_ids     = [aws_security_group.rds.id]
-  publicly_accessible        = false
+  db_subnet_group_name   = aws_db_subnet_group.rds.name # two+ AZ subnets
+  vpc_security_group_ids = [aws_security_group.rds.id]
+  publicly_accessible    = false
 
-  skip_final_snapshot        = true             # dev only
-  deletion_protection        = false            # consider true in prod
-  tags = { Name = "minimal-mysql" }
+  skip_final_snapshot = true  # dev only
+  deletion_protection = false # consider true in prod
+  tags                = { Name = "minimal-mysql" }
 }
 
 output "rds_endpoint" {

@@ -1,8 +1,8 @@
-resource "aws_instance" "vm" {  
-  ami           = "ami-025ca978d4c1d9825"
+resource "aws_instance" "vm" {
+  ami           = "ami-03ea746da1a2e36e7"
   instance_type = "t3.medium"
 
   tags = {
-    Name = "${var.project}-vm"ami-025ca978d4c1d9825
+    Name = "${var.account}-vm"
   }
 }

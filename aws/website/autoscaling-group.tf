@@ -2,7 +2,7 @@
 # Launch Template
 # ------------------------
 resource "aws_launch_template" "web_template" {
-  name_prefix   = "${var.project}-lt-"
+  name_prefix   = "${var.account}-lt-"
   image_id      = var.image_id[var.region]
   instance_type = var.instance_type
 
@@ -11,7 +11,7 @@ resource "aws_launch_template" "web_template" {
   network_interfaces {
     associate_public_ip_address = true
     delete_on_termination       = true
-    security_groups             = [
+    security_groups = [
       aws_security_group.allow-http.id,
       aws_security_group.allow-ssh.id
     ]
@@ -21,7 +21,7 @@ resource "aws_launch_template" "web_template" {
     resource_type = "instance"
 
     tags = {
-      Name = "${var.project}-webserver"
+      Name = "${var.account}-webserver"
     }
   }
 }
@@ -30,7 +30,7 @@ resource "aws_launch_template" "web_template" {
 # Auto Scaling Group
 # ------------------------
 resource "aws_autoscaling_group" "web_asg" {
-  name                      = "${var.project}-asg"
+  name                      = "${var.account}-asg"
   max_size                  = var.instance_count_max
   min_size                  = var.instance_count_min
   desired_capacity          = var.instance_count_min
@@ -47,7 +47,7 @@ resource "aws_autoscaling_group" "web_asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.project}-webserver"
+    value               = "${var.account}-webserver"
     propagate_at_launch = true
   }
 

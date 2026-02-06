@@ -1,7 +1,7 @@
-variable "project" {
-  description = "The name of the current project."
+variable "account" {
+  description = "The name of the current account."
   type        = string
-  default     = "My Project"
+  default     = "My Account"
 }
 
 variable "vpc_id" {

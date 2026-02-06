@@ -3,8 +3,8 @@ resource "aws_vpc" "vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name    = "${var.project}-vpc"
-    Project = var.project
+    Name    = "${var.account}-vpc"
+    Account = var.account
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "subnet-a" {
   availability_zone = "${var.region}a"
 
   tags = {
-    Name = "${var.project}-vpc-subnet-a"
+    Name = "${var.account}-vpc-subnet-a"
   }
 }
 
@@ -24,7 +24,7 @@ resource "aws_subnet" "subnet-b" {
   availability_zone = "${var.region}b"
 
   tags = {
-    Name = "${var.project}-vpc-subnet-b"
+    Name = "${var.account}-vpc-subnet-b"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.project}-vpc-ig"
+    Name = "${var.account}-vpc-ig"
   }
 }
 

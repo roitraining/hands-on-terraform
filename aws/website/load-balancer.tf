@@ -3,7 +3,7 @@
 # Application Load Balancer
 # ------------------------
 resource "aws_lb" "web_alb" {
-  name               = "${var.project}-alb"
+  name               = "${var.account}-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow-http.id]
@@ -16,10 +16,10 @@ resource "aws_lb" "web_alb" {
 # Target Group
 # ------------------------
 resource "aws_lb_target_group" "web_tg" {
-  name     = "${var.project}-tg"
+  name     = "${var.account}-tg"
   port     = 80
   protocol = "HTTP"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id   = aws_vpc.vpc.id
 
   health_check {
     path                = "/"

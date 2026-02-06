@@ -1,7 +1,7 @@
-variable "project" {
-  description = "The name of the current project."
+variable "account" {
+  description = "The name of the current account."
   type        = string
-  default     = "My Project"
+  default     = "My Account"
 }
 
 variable "region" {
@@ -13,8 +13,8 @@ variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
   type        = map(string)
   default = {
-    us-east-1 = "ami-0fa3fe0fa7920f68e",
-    us-east-2 = "ami-025ca978d4c1d9825"
+    us-east-1 = "ami-0532be01f26a3de55",
+    us-east-2 = "ami-03ea746da1a2e36e7"
   }
 }
 
@@ -44,7 +44,7 @@ variable "machine" {
   }
 }
 
-variable "specs"{
-  type = tuple([string, number, bool])
+variable "specs" {
+  type    = tuple([string, number, bool])
   default = ["10.1.1.4", 12, true]
 }

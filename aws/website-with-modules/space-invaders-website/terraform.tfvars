@@ -1,2 +1,2 @@
-project = "space-invaders"
-region = "us-east-1"
+account = "space-invaders"
+region  = "us-east-1"

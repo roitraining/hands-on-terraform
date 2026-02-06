@@ -1,7 +1,7 @@
-variable "project" {
-  description = "The name of the current project."
+variable "account" {
+  description = "The name of the current account."
   type        = string
-  default     = "my-project"
+  default     = "my-account"
 }
 
 variable "region" {
@@ -13,8 +13,8 @@ variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
   type        = map(string)
   default = {
-    us-east-1 = "ami-0be2609ba883822ec",
-    us-east-2 = "ami-0a0ad6b70e61be944"
+    us-east-1 = "ami-0532be01f26a3de55",
+    us-east-2 = "ami-03ea746da1a2e36e7"
   }
 }
 
