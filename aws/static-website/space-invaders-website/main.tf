@@ -11,8 +11,6 @@ module "website_bucket" {
   }
 }
 
-
-
 resource "null_resource" "run_script" {
   depends_on = [module.website_bucket]
 
@@ -20,6 +18,13 @@ resource "null_resource" "run_script" {
     command = "aws s3 sync s3://space-invaders-source s3://${module.website_bucket.bucket_name}"
   }
 }
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@ resource "random_string" "random" {
 # The bucket itself
 resource "aws_s3_bucket" "s3_bucket" {
   bucket        = "${var.bucket_name}-${random_string.random.result}"
-  force_destroy = true
+  force_destroy = true # Lab-friendly; unsafe for production
   tags          = var.tags
 }
 
@@ -50,7 +50,7 @@ data "aws_iam_policy_document" "public_read" {
     actions = ["s3:GetObject"]
 
     principals {
-      type        = "AWS"
+      type        = "*"
       identifiers = ["*"]
     }
 
@@ -70,10 +70,5 @@ resource "aws_s3_bucket_policy" "public_read" {
     aws_s3_bucket_public_access_block.this
   ]
 }
-
 # (Optional) Versioning—kept if you still want it
-resource "aws_s3_bucket_versioning" "versioning" {
-  bucket = aws_s3_bucket.s3_bucket.id
-  versioning_configuration { status = "Enabled" }
-}
 
