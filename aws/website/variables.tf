@@ -46,11 +46,6 @@ variable "instance_count_max" {
   }
 }
 
-variable "add_public_ip" {
-  type    = bool
-  default = true
-}
-
 variable "vpc_cidr" {
   type    = string
   default = "10.10.0.0/16"

@@ -6,7 +6,7 @@ resource "aws_launch_template" "web_template" {
   image_id      = var.image_id[var.region]
   instance_type = var.instance_type
 
-  user_data = filebase64("install_space_invaders.sh")
+  user_data = filebase64("${path.module}/install_space_invaders.sh")
 
   network_interfaces {
     associate_public_ip_address = true

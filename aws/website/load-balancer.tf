@@ -9,7 +9,6 @@ resource "aws_lb" "web_alb" {
   security_groups    = [aws_security_group.allow-http.id]
   subnets            = [aws_subnet.subnet-a.id, aws_subnet.subnet-b.id]
 
-  enable_cross_zone_load_balancing = true
 }
 
 # ------------------------
