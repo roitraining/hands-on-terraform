@@ -58,6 +58,7 @@ module "eks" {
   }
 
   vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
 
   # EKS Auto Mode: AWS-managed compute for nodes
   compute_config = {
