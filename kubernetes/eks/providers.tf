@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.47.0"
+      version = "~> 6.28"
     }
 
     random = {
@@ -27,7 +27,7 @@ terraform {
     }
   }
 
-  required_version = "~> 1.3"
+  required_version = ">= 1.5.7"
 }
 
 
@@ -40,7 +40,7 @@ provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
+    api_version = "client.authentication.k8s.io/v1"
     command     = "aws"
     args = [
       "eks", "get-token",
