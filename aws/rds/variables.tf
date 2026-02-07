@@ -22,14 +22,3 @@ variable "db_username" {
   type    = string
   default = "admin"
 }
-
-variable "db_password" {
-  type      = string
-  default   = "password"
-  sensitive = true
-}
-
-variable "ingress_cidr" {
-  type    = string
-  default = "192.168.0.1/32" # change this!
-}
