@@ -20,5 +20,5 @@ variable "subnet2_cidr" {
 
 variable "db_username" {
   type    = string
-  default = "admin"
+  default = "postgres"
 }
