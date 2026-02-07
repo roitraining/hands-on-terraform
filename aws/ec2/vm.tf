@@ -21,7 +21,7 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["al2023-ami-2023.*-x86_64"]
+    values = ["al2023-ami-2023.*-arm64"]
   }
 
   filter {
@@ -33,8 +33,8 @@ data "aws_ami" "amazon_linux" {
 resource "aws_instance" "vm" {
   count                  = 3
   ami                    = data.aws_ami.amazon_linux.id
-  instance_type          = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.allow-http.id, aws_security_group.allow-ssh.id]
+  instance_type          = "t4g.micro"
+  vpc_security_group_ids = [aws_security_group.allow-web-traffic.id]
 
   user_data = file("install_space-invaders.sh")
 

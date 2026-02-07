@@ -1,39 +1,30 @@
-resource "aws_security_group" "allow-http" {
-  name        = "allow-http"
-  description = "Enable HTTP Access"
+resource "aws_security_group" "allow-web-traffic" {
+  name        = "allow-web-traffic"
+  description = "Enable HTTP and SSH Access"
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "HTTP Access"
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Name = "allow-web-traffic"
   }
 }
 
-resource "aws_security_group" "allow-ssh" {
-  name        = "allow-ssh"
-  description = "Enable SSH Access"
+resource "aws_vpc_security_group_ingress_rule" "allow-http-ipv4-rule" {
+  security_group_id = aws_security_group.allow-web-traffic.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "SSH Access"
-  }
+resource "aws_vpc_security_group_ingress_rule" "allow-ssh-ipv4-rule" {
+  security_group_id = aws_security_group.allow-web-traffic.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_vpc_security_group_egress_rule" "allow-outbound-traffic" {
+  security_group_id = aws_security_group.allow-web-traffic.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1"
 }
