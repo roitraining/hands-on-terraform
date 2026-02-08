@@ -52,6 +52,16 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
 
   addons = {
+    vpc-cni = {
+      most_recent    = true
+      before_compute = true  # Must install before node groups to assign pod IPs
+    }
+    coredns = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
     aws-ebs-csi-driver = {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
     }
@@ -60,12 +70,48 @@ module "eks" {
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
+  # Allow control plane to communicate with nodes
+  security_group_additional_rules = {
+    egress_nodes_ephemeral_ports_tcp = {
+      description                = "To node 1025-65535"
+      protocol                   = "tcp"
+      from_port                  = 1025
+      to_port                    = 65535
+      type                       = "egress"
+      source_node_security_group = true
+    }
+    egress_nodes_443 = {
+      description                = "Node groups to cluster API"
+      protocol                   = "tcp"
+      from_port                  = 443
+      to_port                    = 443
+      type                       = "egress"
+      source_node_security_group = true
+    }
+    egress_nodes_kubelet = {
+      description                = "Cluster API to node kubelets"
+      protocol                   = "tcp"
+      from_port                  = 10250
+      to_port                    = 10250
+      type                       = "egress"
+      source_node_security_group = true
+    }
+    egress_internet = {
+      description = "Cluster internet access"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "egress"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+
   # Managed node group for worker nodes
   eks_managed_node_groups = {
     one = {
       name = "node-group-1"
 
-      instance_types = ["t3.small"]
+      instance_types = ["t3.medium"]
 
       min_size     = 1
       max_size     = 3
