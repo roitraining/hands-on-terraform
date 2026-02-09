@@ -1,7 +1,6 @@
 variable "account" {
-  description = "The name of the current account."
+  description = "The name of the current user account."
   type        = string
-  default     = "my-account"
 }
 
 variable "region" {
@@ -41,8 +40,8 @@ variable "instance_count_max" {
   default     = 2
 
   validation {
-    condition     = var.instance_count_max > 2 && var.instance_count_max <= 10
-    error_message = "Instance count max must be between 3 and 10."
+    condition     = var.instance_count_max >= 3 && var.instance_count_max <= 4
+    error_message = "Instance count max must be between 3 and 4."
   }
 }
 
