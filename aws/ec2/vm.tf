@@ -8,7 +8,7 @@
 #
 # Filters:
 #   - "al2023-ami-*"  matches Amazon Linux 2023 HVM images
-#   - "x86_64"        ensures we get the correct architecture
+#   - "arm64"         ensures we get the correct architecture
 #   - owner "amazon"  ensures we only get official AWS images
 #   - most_recent     picks the newest matching AMI
 #
