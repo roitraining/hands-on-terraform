@@ -34,17 +34,3 @@ variable "instance_count" {
     error_message = "Instance count must be between 1 and 5."
   }
 }
-
-variable "machine" {
-  type = object({ cpus = number, ram = number, os = string })
-  default = {
-    cpus = 8,
-    ram  = 32,
-    os   = "Debian"
-  }
-}
-
-variable "specs" {
-  type    = tuple([string, number, bool])
-  default = ["10.1.1.4", 12, true]
-}
