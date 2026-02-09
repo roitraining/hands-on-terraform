@@ -38,7 +38,7 @@ resource "aws_internet_gateway" "custom-igw" {
   vpc_id = aws_vpc.custom-vpc.id
 
   tags = {
-    Name = "custom-vpc-ig"
+    Name = "custom-vpc-igw"
   }
 }
 
