@@ -70,5 +70,4 @@ resource "aws_s3_bucket_policy" "public_read" {
     aws_s3_bucket_public_access_block.this
   ]
 }
-# (Optional) Versioning—kept if you still want it
 
