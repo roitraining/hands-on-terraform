@@ -32,11 +32,11 @@ resource "aws_subnet" "subnet-b" {
   }
 }
 
-resource "aws_internet_gateway" "ig" {
+resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.account}-vpc-ig"
+    Name = "${var.account}-vpc-igw"
   }
 }
 
@@ -45,7 +45,7 @@ resource "aws_route_table" "public_rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.ig.id
+    gateway_id = aws_internet_gateway.igw.id
   }
 
   tags = {
