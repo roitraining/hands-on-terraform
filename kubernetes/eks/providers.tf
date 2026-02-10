@@ -3,27 +3,27 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.28"
+      version = "~> 6.31"
     }
 
     random = {
       source  = "hashicorp/random"
-      version = "~> 3.6.1"
+      version = "~> 3.8"
     }
 
     tls = {
       source  = "hashicorp/tls"
-      version = "~> 4.0.5"
+      version = "~> 4.2"
     }
 
     cloudinit = {
       source  = "hashicorp/cloudinit"
-      version = "~> 2.3.4"
+      version = "~> 2.3"
     }
 
     kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "2.38.0"
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.38"  # Stay on 2.x - v3.0 has breaking changes
     }
   }
 
