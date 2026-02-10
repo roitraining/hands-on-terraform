@@ -8,19 +8,19 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "eks-cluster-${random_string.suffix.result}"
+  cluster_name = "${var.user_name}-eks-cluster-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
-  length  = 8
+  length  = 4
   special = false
 }
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.8.1"
+  version = "~> 6.6"
 
-  name = "education-vpc"
+  name = "${var.user_name}-vpc"
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -31,6 +31,17 @@ module "vpc" {
   enable_nat_gateway   = true
   single_nat_gateway   = true
   enable_dns_hostnames = true
+
+  private_subnet_names = ["${var.user_name}-private-subnet-1", "${var.user_name}-private-subnet-2", "${var.user_name}-private-subnet-3"]
+  public_subnet_names  = ["${var.user_name}-public-subnet-1", "${var.user_name}-public-subnet-2", "${var.user_name}-public-subnet-3"]
+
+  nat_gateway_tags = {
+    Name = "${var.user_name}-ngw"
+  }
+
+  igw_tags = {
+    Name = "${var.user_name}-igw"
+  }
 
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
@@ -43,7 +54,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 21.0"
+  version = "~> 21.15"
 
   name               = local.cluster_name
   kubernetes_version = "1.35"
@@ -109,7 +120,7 @@ module "eks" {
   # Managed node group for worker nodes
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = "${var.user_name}-node-group-1"
 
       instance_types = ["t3.medium"]
 
@@ -129,10 +140,10 @@ data "aws_iam_policy" "ebs_csi_policy" {
 # IRSA is used for IAM access; Pod Security Admission can be added later if desired.
 module "irsa-ebs-csi" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version = "5.39.0"
+  version = "~> 6.4"
 
   create_role                   = true
-  role_name                     = "AmazonEKSTFEBSCSIRole-${module.eks.cluster_name}"
+  role_name                     = "${var.user_name}-ebs-csi-role"
   provider_url                  = module.eks.oidc_provider
   role_policy_arns              = [data.aws_iam_policy.ebs_csi_policy.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
