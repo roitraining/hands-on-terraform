@@ -11,10 +11,18 @@ variable "zone" {
   type = string
 }
 
+variable "os_version" {
+  type      = number
+  default   = 12
+}
+
 variable "image_id" {
   description = "The id of the machine image (AMI) to use for the server."
-  type        = string
-  default = "debian-cloud/debian-12"
+  type        = map(string)
+  default = {
+        12 = "debian-cloud/debian-12",
+        13 = "debian-cloud/debian-13"
+  }
 }
 
 variable "machine_type" {
@@ -26,4 +34,10 @@ variable "machine_type" {
 variable "spot" {
   type    = bool
   default = false
+}
+
+variable "instance_count" {
+  description = "Number of instances to provision."
+  type      = number
+  default   = 2
 }
